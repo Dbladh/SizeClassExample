@@ -31,16 +31,46 @@
                             <constraint firstItem="KyO-6F-0eM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="0ht-88-Ckm"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KyO-6F-0eM" secondAttribute="bottom" id="1NO-lC-JqT"/>
                             <constraint firstItem="BnN-vt-ibD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="3rb-hq-0cP"/>
+                            <constraint firstItem="BnN-vt-ibD" firstAttribute="trailing" secondItem="KyO-6F-0eM" secondAttribute="trailing" constant="-292" id="8jz-LT-49a"/>
                             <constraint firstItem="BnN-vt-ibD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Fdo-Df-QzD"/>
+                            <constraint firstItem="KyO-6F-0eM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="PDc-x0-hol"/>
+                            <constraint firstItem="KyO-6F-0eM" firstAttribute="leading" secondItem="BnN-vt-ibD" secondAttribute="trailing" constant="19" id="PwJ-2J-yNV">
+                                <variation key="heightClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="BnN-vt-ibD" firstAttribute="width" secondItem="KyO-6F-0eM" secondAttribute="width" id="UaY-r1-JxM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BnN-vt-ibD" secondAttribute="trailing" constant="-20" id="a3g-dG-10z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KyO-6F-0eM" secondAttribute="trailing" constant="-20" id="iNz-Oz-BV4"/>
                             <constraint firstItem="KyO-6F-0eM" firstAttribute="height" secondItem="BnN-vt-ibD" secondAttribute="height" id="imf-mR-ygu"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BnN-vt-ibD" secondAttribute="bottom" id="mpy-gJ-lYv"/>
                             <constraint firstItem="KyO-6F-0eM" firstAttribute="top" secondItem="BnN-vt-ibD" secondAttribute="bottom" id="zhg-rp-J9H"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8jz-LT-49a"/>
+                                <exclude reference="UaY-r1-JxM"/>
+                                <exclude reference="PDc-x0-hol"/>
+                                <exclude reference="PwJ-2J-yNV"/>
+                                <exclude reference="mpy-gJ-lYv"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="8jz-LT-49a"/>
+                                <include reference="UaY-r1-JxM"/>
+                                <exclude reference="a3g-dG-10z"/>
+                                <exclude reference="0ht-88-Ckm"/>
+                                <include reference="PDc-x0-hol"/>
+                                <include reference="PwJ-2J-yNV"/>
+                                <exclude reference="imf-mR-ygu"/>
+                                <exclude reference="zhg-rp-J9H"/>
+                                <include reference="mpy-gJ-lYv"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="555" y="468"/>
         </scene>
     </scenes>
 </document>
