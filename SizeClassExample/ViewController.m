@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UIView *redView;
 @property (nonatomic, strong) UIView *blueView;
+@property (nonatomic, strong) NSArray *viewConstraints;
 
 @end
 
@@ -31,18 +32,28 @@
     self.blueView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.blueView];
     
-    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_redView, _blueView);
-    if (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_redView]|" options:0 metrics:nil views:viewsDictionary]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_blueView]|" options:0 metrics:nil views:viewsDictionary]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_redView][_blueView(_redView)]|" options:0 metrics:nil views:viewsDictionary]];
-    } else if (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_redView]|" options:0 metrics:nil views:viewsDictionary]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_blueView]|" options:0 metrics:nil views:viewsDictionary]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_redView][_blueView(_redView)]|" options:0 metrics:nil views:viewsDictionary]];
-    }
+    [self updateViewConstraints];
 }
 
+- (void)updateViewConstraints {
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_redView, _blueView);
+    [self.view removeConstraints:self.viewConstraints];
+    if (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
+        NSMutableArray *mutableConstraints = [NSMutableArray array];
+        [mutableConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_redView]|" options:0 metrics:nil views:viewsDictionary]];
+        [mutableConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_blueView]|" options:0 metrics:nil views:viewsDictionary]];
+        [mutableConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_redView][_blueView(_redView)]|" options:0 metrics:nil views:viewsDictionary]];
+        self.viewConstraints = mutableConstraints;
+    } else if (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
+        NSMutableArray *mutableConstraints = [NSMutableArray array];
+        [mutableConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_redView]|" options:0 metrics:nil views:viewsDictionary]];
+        [mutableConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_blueView]|" options:0 metrics:nil views:viewsDictionary]];
+        [mutableConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_redView][_blueView(_redView)]|" options:0 metrics:nil views:viewsDictionary]];
+        self.viewConstraints = mutableConstraints;
+    }
+    [self.view addConstraints:self.viewConstraints];
+    [super updateViewConstraints];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
